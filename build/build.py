@@ -15,7 +15,7 @@ import os, re, html, glob, shutil, json
 import markdown as md_lib
 from docx import Document
 
-SRC = "/home/claude/extracted"
+SRC = "/home/claude/v2/sports-reporting-ai-tools"
 OUT = "/home/claude/repo"
 DOCS = os.path.join(OUT, "docs")
 
@@ -25,36 +25,38 @@ DOCS = os.path.join(OUT, "docs")
 # Each page: slug, title, source file, kind ('md'|'docx'), group
 PAGES = [
     # Tools (prompts) — md files, copiable
-    dict(slug="sr1-match-report-analyser", title="SR1 · Match Report Analyser",
-         src="match-report-analyser.md", kind="md", group="Tools (prompts)"),
-    dict(slug="sr2-match-report-coach", title="SR2 · Match Report Coach",
-         src="match-report-coach-sr2.md", kind="md", group="Tools (prompts)"),
-    dict(slug="sr3-match-preview-analyser", title="SR3 · Match Preview Analyser",
-         src="match-preview-analyser-sr3-v0.5.md", kind="md", group="Tools (prompts)"),
-    # Papers
-    dict(slug="previewing-the-unplayed-match", title="Previewing the Unplayed Match",
-         src="preview-reporting-paper.docx", kind="docx", group="Papers"),
-    dict(slug="paper-skeleton", title="Important Because It Isn't — Paper Skeleton",
-         src="paper-skeleton.docx", kind="docx", group="Papers"),
-    # Design Discussion
-    dict(slug="design-tutor-rationale", title="Tutor Design & Rationale",
-         src="sports-journalism-tutor-design.docx", kind="docx", group="Design Discussion"),
-    dict(slug="design-part2-readers-journey", title="Part 2 · The Reader's Journey",
-         src="readers-journey-design-part2.docx", kind="docx", group="Design Discussion"),
-    dict(slug="design-part3-important-because-it-isnt", title="Part 3 · Important Because It Isn't",
-         src="important-because-it-isnt-part3.docx", kind="docx", group="Design Discussion"),
-    dict(slug="design-part4-voice", title="Part 4 · Voice",
-         src="voice-track-design-part4.docx", kind="docx", group="Design Discussion"),
-    dict(slug="design-part5-teaching-not-coaching", title="Part 5 · Teaching, Not Coaching",
-         src="sr2-design-part5.docx", kind="docx", group="Design Discussion"),
-    dict(slug="design-part6-preview-and-social-currency", title="Part 6 · The Preview & Social Currency",
-         src="preview-and-social-currency-part6_1.docx", kind="docx", group="Design Discussion"),
-    # Logs
-    dict(slug="sr1-test-log", title="SR1 Test Log",
-         src="sr1-test-log.docx", kind="docx", group="Logs"),
+    dict(slug="sr1-match-report-analyser", title="Match Report Analyser — SR1",
+         src="SR1-match-report-analyser-v0.6.md", kind="md", group="Tools"),
+    dict(slug="sr2-match-report-coach", title="Match Report Coach (beginner route) — SR2",
+         src="SR2-match-report-coach-beginner-route-v0.2.md", kind="md", group="Tools"),
+    dict(slug="sr3-match-preview-analyser", title="Match Preview Analyser — SR3",
+         src="SR3-match-preview-analyser-v0.5-beta.md", kind="md", group="Tools"),
+    dict(slug="sr4-feature-analysis-tool", title="Feature Analysis Tool — SR4",
+         src="SR4-feature-analysis-tool-v0.1.md", kind="md", group="Tools"),
+    # Design notes (SRD)
+    dict(slug="srd-01-tutor-design-rationale", title="Writing Tutor: Design Rationale — SRD-01",
+         src="SRD-01-ai-sports-journalism-writing-tutor-design-rationale.docx", kind="docx", group="Design notes"),
+    dict(slug="srd-02-readers-journey", title="The Reader's Journey — SRD-02",
+         src="SRD-02-readers-journey-attachment-and-economy.docx", kind="docx", group="Design notes"),
+    dict(slug="srd-03-important-because-it-isnt", title="Important Because It Isn't — SRD-03",
+         src="SRD-03-important-because-it-isnt-conceptual-spine.docx", kind="docx", group="Design notes"),
+    dict(slug="srd-04-voice", title="Voice — SRD-04",
+         src="SRD-04-voice-fine-grain-of-economy-cliche-test.docx", kind="docx", group="Design notes"),
+    dict(slug="srd-05-teaching-not-coaching", title="Teaching, Not Coaching — SRD-05",
+         src="SRD-05-teaching-not-coaching-sr2-beginner-route.docx", kind="docx", group="Design notes"),
+    dict(slug="srd-06-preview-and-social-currency", title="The Preview & Social Currency — SRD-06",
+         src="SRD-06-preview-pull-before-event-social-currency.docx", kind="docx", group="Design notes"),
+    # Evidence (SRE)
+    dict(slug="sre-01-sr1-test-log", title="SR1 Match Report Analyser: Test Log — SRE-01",
+         src="SRE-01-sr1-match-report-analyser-test-log.docx", kind="docx", group="Evidence"),
+    # Papers (SRP)
+    dict(slug="srp-01-paper-skeleton", title="Important Because It Isn't: Paper Skeleton — SRP-01",
+         src="SRP-01-important-because-it-isnt-paper-skeleton.docx", kind="docx", group="Papers"),
+    dict(slug="srp-02-previewing-the-unplayed-match", title="Previewing the Unplayed Match — SRP-02",
+         src="SRP-02-previewing-the-unplayed-match-working-paper.docx", kind="docx", group="Papers"),
 ]
 
-GROUP_ORDER = ["Tools (prompts)", "Papers", "Design Discussion", "Logs"]
+GROUP_ORDER = ["Tools", "Design notes", "Evidence", "Papers"]
 
 GITHUB_REPO = "https://github.com/markbeachill/sports-reporter-tools"
 ZIP_URL = "https://github.com/markbeachill/sports-reporter-tools/archive/refs/heads/main.zip"
@@ -180,6 +182,8 @@ def render_sidebar(active_slug, prefix=""):
             href = f'{prefix}{pg["slug"]}.html'
             parts.append(f'<a class="{cls}" href="{href}">{html.escape(pg["title"])}</a>')
         parts.append("</div>")
+    parts.append(f'<div class="nav-group"><div class="nav-group-title">Testing</div>'
+                 f'<a class="nav-link nav-external" href="{GITHUB_REPO}/tree/main/source/benchmark">Benchmark protocol ↗</a></div>')
     parts.append("</nav>")
     return "\n".join(parts)
 
@@ -293,10 +297,10 @@ def write_landing(cards):
     sidebar = render_sidebar("__home__")
     sections = []
     intros = {
-        "Tools (prompts)": "The analysis and tutoring prompts. Each one is self-contained — copy it, paste it into an AI assistant, and paste in a match report or preview.",
-        "Papers": "Working papers behind the toolkit: the model, how it was built, and how it was tested against real writing.",
-        "Design Discussion": "The conceptual spine — the running design notes that shaped each analytical move the tools make.",
-        "Logs": "Test records: what was run, and what was found.",
+        "Tools": "The runnable prompts (SR1–SR4). Each one is self-contained — copy it, paste it into an AI assistant, and paste in a match report, preview or feature.",
+        "Design notes": "The SRD series — the design rationale and conceptual spine that shaped each analytical move the tools make.",
+        "Evidence": "The SRE series — validation and test logs recording what was run and what was found.",
+        "Papers": "The SRP series — working papers and article skeletons: the model, how it was built, and how it was tested against real writing.",
     }
     for g in GROUP_ORDER:
         items = []
@@ -312,15 +316,19 @@ def write_landing(cards):
             f'<div class="card-grid">{"".join(items)}</div></section>'
         )
     content = f"""
-    <p class="lead">A small library of AI analysis and tutoring tools for sports writing — match reports and previews — together with the design notes and papers behind them.</p>
-    <p>The <strong>tools</strong> are copiable prompts: take one, paste it into an AI assistant, and give it a piece of writing to analyse. The <strong>papers</strong> and <strong>design discussion</strong> record how the tools were reasoned out and tested.</p>
+    <p class="lead">A small toolkit and research archive for AI-supported sports-journalism teaching. The aim is not to make AI write sports journalism for students, but to help writers see how their writing works on a reader.</p>
+    <p>The <strong>tools</strong> (SR1–SR4) are copiable prompts: take one, paste it into an AI assistant, and give it a match report, preview or feature to analyse. The supporting documents are organised in four streams — <strong>SR</strong> tools, <strong>SRD</strong> design notes, <strong>SRE</strong> evidence, and <strong>SRP</strong> papers — keeping practical tools, design rationale, test evidence and publishable drafts separate while preserving the development sequence.</p>
     <div class="prompt-bar" style="margin-top:1.5rem">
-      <div class="prompt-bar-text"><strong>New here?</strong> Start with <a href="{[p for p in PAGES if p['slug']=='sr1-match-report-analyser'][0]['slug']}.html">SR1 · Match Report Analyser</a>, or the beginner route <a href="sr2-match-report-coach.html">SR2 · Match Report Coach</a>.</div>
+      <div class="prompt-bar-text"><strong>New here?</strong> Start with <a href="sr1-match-report-analyser.html">Match Report Analyser (SR1)</a>, or the beginner route <a href="sr2-match-report-coach.html">Match Report Coach (SR2)</a>. New in this version: the <a href="sr4-feature-analysis-tool.html">Feature Analysis Tool (SR4)</a>.</div>
     </div>
     {''.join(sections)}
+    <section class="group"><h2 id="benchmark"><a class="anchor" href="#benchmark">#</a>Benchmark</h2>
+      <p class="group-intro">The project includes a reproducible-testing protocol — a scoring rubric, case and run-log templates, and a model-comparison matrix — for validating tool runs across models. It is a working scaffold for contributors and lives in the repository rather than as library pages.</p>
+      <div class="card-grid"><a class="card" href="{GITHUB_REPO}/tree/main/source/benchmark"><span class="card-title">Benchmark protocol & templates on GitHub</span><span class="card-go">↗</span></a></div>
+    </section>
     """
     # landing has no right toc; build a toc of the groups instead
-    toc = [(2, g, slugify(g)) for g in GROUP_ORDER]
+    toc = [(2, g, slugify(g)) for g in GROUP_ORDER] + [(2, "Benchmark", "benchmark")]
     # add ids to section h2s
     for g in GROUP_ORDER:
         content = content.replace(f'<h2>{html.escape(g)}</h2>', f'<h2 id="{slugify(g)}"><a class="anchor" href="#{slugify(g)}">#</a>{html.escape(g)}</h2>')
@@ -335,18 +343,28 @@ def write_landing(cards):
 def write_readme():
     txt = f"""# Sports Reporter Tools
 
-A documentation library of AI analysis and tutoring tools for sports writing
-(match reports and previews), with the design notes and working papers behind them.
+A documentation library and research archive for AI-supported sports-journalism
+teaching: runnable analysis/tutoring prompts, plus the design notes, evidence
+logs and working papers behind them.
 
 **Live site:** https://markbeachill.github.io/sports-reporter-tools/
 
 ## What's here
 
-- **Tools (prompts)** — SR1, SR2, SR3: copiable AI prompts. Open a tool page and
-  press **Copy prompt** to copy the full prompt, then paste it into an AI assistant.
-- **Papers** — working papers on the model and how it was built and tested.
-- **Design Discussion** — the running design notes (parts 2–6 + rationale).
-- **Logs** — test records.
+The archive uses four document streams:
+
+- **Tools (SR1–SR4)** — copiable AI prompts. Open a tool page and press
+  **Copy prompt** to copy the full prompt, then paste it into an AI assistant.
+  SR1 match-report analyser, SR2 beginner coach, SR3 preview analyser,
+  SR4 feature analysis tool.
+- **Design notes (SRD)** — the design rationale and conceptual spine.
+- **Evidence (SRE)** — validation and test logs.
+- **Papers (SRP)** — working papers and article skeletons.
+
+The original source documents (`.md` and `.docx`) and the **benchmark/**
+testing protocol live in `source/`. The benchmark is a reproducible-testing
+scaffold (rubric, templates, model-comparison matrix) and is linked from the
+site rather than rendered as pages.
 
 ## How it's built
 
@@ -354,9 +372,9 @@ The site is plain static HTML/CSS/JS in `docs/` — **no build step is required 
 serve it**. GitHub Pages serves the `docs/` folder directly. A `.nojekyll` file is
 included so Pages serves the files as-is.
 
-The HTML was generated from the source `.md` and `.docx` files with `build.py`
-(kept at the repo root for reference). The raw prompt files live in
-`docs/prompts/` so the **Copy prompt** buttons fetch the real source.
+The HTML was generated from the source files with `build/build.py`. The raw prompt
+files live in `docs/prompts/` and are also embedded in each tool page, so the
+**Copy prompt** buttons work whether or not the page can fetch.
 
 ### Publishing on GitHub Pages
 
@@ -367,6 +385,12 @@ The HTML was generated from the source `.md` and `.docx` files with `build.py`
 5. The site publishes at the URL above (give it a minute on first deploy).
 
 No Actions workflow or build command is needed.
+
+## Note on the source README
+
+The upstream `source/README.md` has a small copy-paste glitch: the SR4 bullet
+was inserted inside the SR3 description. The site renders SR3 and SR4 correctly;
+worth fixing in the source when convenient.
 """
     with open(os.path.join(OUT, "README.md"), "w", encoding="utf-8") as f:
         f.write(txt)

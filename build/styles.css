@@ -132,6 +132,8 @@ a:hover { text-decoration: underline; }
   color: var(--accent); background: var(--accent-soft);
   font-weight: 600;
 }
+.nav-link.nav-external { color: var(--text-faint); }
+.nav-link.nav-external:hover { color: var(--accent); }
 
 /* ---------- Content ---------- */
 .content { padding: 40px 48px 80px; min-width: 0; }

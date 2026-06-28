@@ -3,8 +3,8 @@
 The published site in `../docs/` is already built and served directly by GitHub
 Pages — you do **not** need to run anything to publish it.
 
-These files document how the HTML was generated from the original `.md` and
-`.docx` sources (kept in `../source/`):
+These files document how the HTML was generated from the original source files in
+`../source/`:
 
 - `build.py` — converts the sources into the static site in `docs/`.
 - `styles.css`, `app.js` — the site's stylesheet and behaviour (also copied into `docs/`).

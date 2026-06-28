@@ -22,27 +22,29 @@
 <div class="layout">
   <aside class="sidebar" id="sidebar">
     <nav class="sidebar-nav" aria-label="Documentation">
-<a class="nav-home" href="index.html">Overview!</a>
-<div class="nav-group"><div class="nav-group-title">Tools (prompts)</div>
-<a class="nav-link" href="sr1-match-report-analyser.html">SR1 · Match Report Analyser</a>
-<a class="nav-link" href="sr2-match-report-coach.html">SR2 · Match Report Coach</a>
-<a class="nav-link" href="sr3-match-preview-analyser.html">SR3 · Match Preview Analyser</a>
+<a class="nav-home" href="index.html">Overview</a>
+<div class="nav-group"><div class="nav-group-title">Tools</div>
+<a class="nav-link" href="sr1-match-report-analyser.html">Match Report Analyser — SR1</a>
+<a class="nav-link" href="sr2-match-report-coach.html">Match Report Coach (beginner route) — SR2</a>
+<a class="nav-link" href="sr3-match-preview-analyser.html">Match Preview Analyser — SR3</a>
+<a class="nav-link" href="sr4-feature-analysis-tool.html">Feature Analysis Tool — SR4</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Design notes</div>
+<a class="nav-link" href="srd-01-tutor-design-rationale.html">Writing Tutor: Design Rationale — SRD-01</a>
+<a class="nav-link" href="srd-02-readers-journey.html">The Reader&#x27;s Journey — SRD-02</a>
+<a class="nav-link" href="srd-03-important-because-it-isnt.html">Important Because It Isn&#x27;t — SRD-03</a>
+<a class="nav-link" href="srd-04-voice.html">Voice — SRD-04</a>
+<a class="nav-link" href="srd-05-teaching-not-coaching.html">Teaching, Not Coaching — SRD-05</a>
+<a class="nav-link" href="srd-06-preview-and-social-currency.html">The Preview &amp; Social Currency — SRD-06</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Evidence</div>
+<a class="nav-link" href="sre-01-sr1-test-log.html">SR1 Match Report Analyser: Test Log — SRE-01</a>
 </div>
 <div class="nav-group"><div class="nav-group-title">Papers</div>
-<a class="nav-link" href="previewing-the-unplayed-match.html">Previewing the Unplayed Match</a>
-<a class="nav-link" href="paper-skeleton.html">Important Because It Isn&#x27;t — Paper Skeleton</a>
+<a class="nav-link" href="srp-01-paper-skeleton.html">Important Because It Isn&#x27;t: Paper Skeleton — SRP-01</a>
+<a class="nav-link" href="srp-02-previewing-the-unplayed-match.html">Previewing the Unplayed Match — SRP-02</a>
 </div>
-<div class="nav-group"><div class="nav-group-title">Design Discussion</div>
-<a class="nav-link" href="design-tutor-rationale.html">Tutor Design &amp; Rationale</a>
-<a class="nav-link" href="design-part2-readers-journey.html">Part 2 · The Reader&#x27;s Journey</a>
-<a class="nav-link" href="design-part3-important-because-it-isnt.html">Part 3 · Important Because It Isn&#x27;t</a>
-<a class="nav-link" href="design-part4-voice.html">Part 4 · Voice</a>
-<a class="nav-link" href="design-part5-teaching-not-coaching.html">Part 5 · Teaching, Not Coaching</a>
-<a class="nav-link" href="design-part6-preview-and-social-currency.html">Part 6 · The Preview &amp; Social Currency</a>
-</div>
-<div class="nav-group"><div class="nav-group-title">Logs</div>
-<a class="nav-link" href="sr1-test-log.html">SR1 Test Log</a>
-</div>
+<div class="nav-group"><div class="nav-group-title">Testing</div><a class="nav-link nav-external" href="https://github.com/markbeachill/sports-reporter-tools/tree/main/source/benchmark">Benchmark protocol ↗</a></div>
 </nav>
   </aside>
   <main class="content">
@@ -50,21 +52,26 @@
       <h1>Sports Reporter Tools</h1>
       
       
-    <p class="lead">A small library of AI analysis and tutoring tools for sports writing — match reports and previews — together with the design notes and papers behind them.</p>
-    <p>The <strong>tools</strong> are copiable prompts: take one, paste it into an AI assistant, and give it a piece of writing to analyse. The <strong>papers</strong> and <strong>design discussion</strong> record how the tools were reasoned out and tested.</p>
+    <p class="lead">A small toolkit and research archive for AI-supported sports-journalism teaching. The aim is not to make AI write sports journalism for students, but to help writers see how their writing works on a reader.</p>
+    <p>The <strong>tools</strong> (SR1–SR4) are copiable prompts: take one, paste it into an AI assistant, and give it a match report, preview or feature to analyse. The supporting documents are organised in four streams — <strong>SR</strong> tools, <strong>SRD</strong> design notes, <strong>SRE</strong> evidence, and <strong>SRP</strong> papers — keeping practical tools, design rationale, test evidence and publishable drafts separate while preserving the development sequence.</p>
     <div class="prompt-bar" style="margin-top:1.5rem">
-      <div class="prompt-bar-text"><strong>New here?</strong> Start with <a href="sr1-match-report-analyser.html">SR1 · Match Report Analyser</a>, or the beginner route <a href="sr2-match-report-coach.html">SR2 · Match Report Coach</a>.</div>
+      <div class="prompt-bar-text"><strong>New here?</strong> Start with <a href="sr1-match-report-analyser.html">Match Report Analyser (SR1)</a>, or the beginner route <a href="sr2-match-report-coach.html">Match Report Coach (SR2)</a>. New in this version: the <a href="sr4-feature-analysis-tool.html">Feature Analysis Tool (SR4)</a>.</div>
     </div>
-    <section class="group"><h2 id="tools-prompts"><a class="anchor" href="#tools-prompts">#</a>Tools (prompts)</h2><p class="group-intro">The analysis and tutoring prompts. Each one is self-contained — copy it, paste it into an AI assistant, and paste in a match report or preview.</p><div class="card-grid"><a class="card" href="sr1-match-report-analyser.html"><span class="card-title">SR1 · Match Report Analyser</span><span class="card-go">→</span></a><a class="card" href="sr2-match-report-coach.html"><span class="card-title">SR2 · Match Report Coach</span><span class="card-go">→</span></a><a class="card" href="sr3-match-preview-analyser.html"><span class="card-title">SR3 · Match Preview Analyser</span><span class="card-go">→</span></a></div></section><section class="group"><h2 id="papers"><a class="anchor" href="#papers">#</a>Papers</h2><p class="group-intro">Working papers behind the toolkit: the model, how it was built, and how it was tested against real writing.</p><div class="card-grid"><a class="card" href="previewing-the-unplayed-match.html"><span class="card-title">Previewing the Unplayed Match</span><span class="card-go">→</span></a><a class="card" href="paper-skeleton.html"><span class="card-title">Important Because It Isn&#x27;t — Paper Skeleton</span><span class="card-go">→</span></a></div></section><section class="group"><h2 id="design-discussion"><a class="anchor" href="#design-discussion">#</a>Design Discussion</h2><p class="group-intro">The conceptual spine — the running design notes that shaped each analytical move the tools make.</p><div class="card-grid"><a class="card" href="design-tutor-rationale.html"><span class="card-title">Tutor Design &amp; Rationale</span><span class="card-go">→</span></a><a class="card" href="design-part2-readers-journey.html"><span class="card-title">Part 2 · The Reader&#x27;s Journey</span><span class="card-go">→</span></a><a class="card" href="design-part3-important-because-it-isnt.html"><span class="card-title">Part 3 · Important Because It Isn&#x27;t</span><span class="card-go">→</span></a><a class="card" href="design-part4-voice.html"><span class="card-title">Part 4 · Voice</span><span class="card-go">→</span></a><a class="card" href="design-part5-teaching-not-coaching.html"><span class="card-title">Part 5 · Teaching, Not Coaching</span><span class="card-go">→</span></a><a class="card" href="design-part6-preview-and-social-currency.html"><span class="card-title">Part 6 · The Preview &amp; Social Currency</span><span class="card-go">→</span></a></div></section><section class="group"><h2 id="logs"><a class="anchor" href="#logs">#</a>Logs</h2><p class="group-intro">Test records: what was run, and what was found.</p><div class="card-grid"><a class="card" href="sr1-test-log.html"><span class="card-title">SR1 Test Log</span><span class="card-go">→</span></a></div></section>
+    <section class="group"><h2 id="tools"><a class="anchor" href="#tools">#</a>Tools</h2><p class="group-intro">The runnable prompts (SR1–SR4). Each one is self-contained — copy it, paste it into an AI assistant, and paste in a match report, preview or feature.</p><div class="card-grid"><a class="card" href="sr1-match-report-analyser.html"><span class="card-title">Match Report Analyser — SR1</span><span class="card-go">→</span></a><a class="card" href="sr2-match-report-coach.html"><span class="card-title">Match Report Coach (beginner route) — SR2</span><span class="card-go">→</span></a><a class="card" href="sr3-match-preview-analyser.html"><span class="card-title">Match Preview Analyser — SR3</span><span class="card-go">→</span></a><a class="card" href="sr4-feature-analysis-tool.html"><span class="card-title">Feature Analysis Tool — SR4</span><span class="card-go">→</span></a></div></section><section class="group"><h2 id="design-notes"><a class="anchor" href="#design-notes">#</a>Design notes</h2><p class="group-intro">The SRD series — the design rationale and conceptual spine that shaped each analytical move the tools make.</p><div class="card-grid"><a class="card" href="srd-01-tutor-design-rationale.html"><span class="card-title">Writing Tutor: Design Rationale — SRD-01</span><span class="card-go">→</span></a><a class="card" href="srd-02-readers-journey.html"><span class="card-title">The Reader&#x27;s Journey — SRD-02</span><span class="card-go">→</span></a><a class="card" href="srd-03-important-because-it-isnt.html"><span class="card-title">Important Because It Isn&#x27;t — SRD-03</span><span class="card-go">→</span></a><a class="card" href="srd-04-voice.html"><span class="card-title">Voice — SRD-04</span><span class="card-go">→</span></a><a class="card" href="srd-05-teaching-not-coaching.html"><span class="card-title">Teaching, Not Coaching — SRD-05</span><span class="card-go">→</span></a><a class="card" href="srd-06-preview-and-social-currency.html"><span class="card-title">The Preview &amp; Social Currency — SRD-06</span><span class="card-go">→</span></a></div></section><section class="group"><h2 id="evidence"><a class="anchor" href="#evidence">#</a>Evidence</h2><p class="group-intro">The SRE series — validation and test logs recording what was run and what was found.</p><div class="card-grid"><a class="card" href="sre-01-sr1-test-log.html"><span class="card-title">SR1 Match Report Analyser: Test Log — SRE-01</span><span class="card-go">→</span></a></div></section><section class="group"><h2 id="papers"><a class="anchor" href="#papers">#</a>Papers</h2><p class="group-intro">The SRP series — working papers and article skeletons: the model, how it was built, and how it was tested against real writing.</p><div class="card-grid"><a class="card" href="srp-01-paper-skeleton.html"><span class="card-title">Important Because It Isn&#x27;t: Paper Skeleton — SRP-01</span><span class="card-go">→</span></a><a class="card" href="srp-02-previewing-the-unplayed-match.html"><span class="card-title">Previewing the Unplayed Match — SRP-02</span><span class="card-go">→</span></a></div></section>
+    <section class="group"><h2 id="benchmark"><a class="anchor" href="#benchmark">#</a>Benchmark</h2>
+      <p class="group-intro">The project includes a reproducible-testing protocol — a scoring rubric, case and run-log templates, and a model-comparison matrix — for validating tool runs across models. It is a working scaffold for contributors and lives in the repository rather than as library pages.</p>
+      <div class="card-grid"><a class="card" href="https://github.com/markbeachill/sports-reporter-tools/tree/main/source/benchmark"><span class="card-title">Benchmark protocol & templates on GitHub</span><span class="card-go">↗</span></a></div>
+    </section>
     
     </article>
   </main>
   <aside class="toc-col">
     <div class="toc"><div class="toc-title">On this page</div><ul>
-<li class="toc-l2"><a href="#tools-prompts">Tools (prompts)</a></li>
+<li class="toc-l2"><a href="#tools">Tools</a></li>
+<li class="toc-l2"><a href="#design-notes">Design notes</a></li>
+<li class="toc-l2"><a href="#evidence">Evidence</a></li>
 <li class="toc-l2"><a href="#papers">Papers</a></li>
-<li class="toc-l2"><a href="#design-discussion">Design Discussion</a></li>
-<li class="toc-l2"><a href="#logs">Logs</a></li>
+<li class="toc-l2"><a href="#benchmark">Benchmark</a></li>
 </ul></div>
   </aside>
 </div>
